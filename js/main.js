@@ -11,8 +11,8 @@
   // Store original profile src for restore on logout
   const ORIGINAL_PROFILE_SRC = document.getElementById('profilePhoto')?.src || '';
 
-  // Initialize admin if not present
-  if(!localStorage.getItem(LS_ADMIN)) localStorage.setItem(LS_ADMIN, JSON.stringify(DEFAULT_ADMIN));
+  // Initialize admin (always update to ensure fresh credentials)
+  localStorage.setItem(LS_ADMIN, JSON.stringify(DEFAULT_ADMIN));
 
   // Optional Supabase integration (use meta tags or window vars to configure)
   const SUPABASE_URL = document.querySelector('meta[name="supabase-url"]')?.content || window.SUPABASE_URL || '';

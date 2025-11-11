@@ -66,6 +66,18 @@ a:hover{color:#ffffff!important;text-decoration:none}
 
 /* Modal background and text */
 .modal-content{background:rgba(18,20,28,0.95)!important;color:#e9f2ff!important}
+.modal-header{border-bottom-color:rgba(255,255,255,0.08)!important}
+.modal-body{color:#e9f9ff!important}
+.modal-body .form-text{color:rgba(230,238,248,0.80)!important;font-size:0.9rem;line-height:1.5}
+.modal-body input[type="text"], .modal-body input[type="password"], .modal-body textarea, .modal-body select{
+	color:#ffffff!important;
+	background:rgba(255,255,255,0.04)!important;
+	border-color:rgba(255,255,255,0.12)!important;
+	font-size:1rem;
+}
+.modal-body input[type="text"]::placeholder, .modal-body input[type="password"]::placeholder, .modal-body textarea::placeholder{
+	color:rgba(230,238,248,0.48)!important;
+}
 
 /* Badges and skill pills */
 .skill-badge{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.05);color:#eaf0ff}

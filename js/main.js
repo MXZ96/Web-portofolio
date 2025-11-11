@@ -2,7 +2,6 @@
 (function(){
   // --- Basic data & helpers ---
   const YEAR = document.getElementById('year'); if(YEAR) YEAR.textContent = new Date().getFullYear();
-  const DEFAULT_ADMIN = {username:'admin', password:'admin123'}; // Change this after first login
   const DEFAULT_ADMIN = {username:'MXZ9696', password:'Popo094343_'}; // Change this after first login
   const LS_PROJECTS = 'portfolio_projects_v1';
   const LS_ABOUT = 'portfolio_about_v1';

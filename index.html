@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ikbaar Rafi Hermansyah — Portofolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Futuristic fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Supabase config (fill these or set env when deploying) -->
+  <meta name="supabase-url" content="">
+  <meta name="supabase-key" content="">
+</head>
+<body class="futuristic">
+  <!-- Star field canvas (decorative) -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="scanline" aria-hidden="true"></div>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">MXZ96</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Pengalaman</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-3"><button id="btnLogin" class="btn btn-outline-light btn-sm">Admin Login</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center">
+          <img id="profilePhoto" src="assets/images/profile.jpg" onerror="this.onerror=null;this.src='https://picsum.photos/seed/profile/400'" alt="Profile" class="profile-img shadow-sm">
+        </div>
+        <div class="col-md-8">
+          <h1 class="display-5 fw-bold shimmer-title">Ikbaar Rafi Hermansyah
+            <span class="badge rounded-pill ms-2" style="background:rgba(255,255,255,0.04);">Mahasiswa • Developer</span>
+          </h1>
+          <p class="lead mt-3">Halo! Saya seorang pengembang yang suka membuat aplikasi web interaktif. Portofolio ini menampilkan proyek, keahlian, dan pengalaman kerja saya.</p>
+          <div class="mt-2 reveal" id="heroExtras">
+            <span class="hero-typed" data-words="Full-Stack Developer|Web Developer|Open-Source|AI Enthusiast">Full-Stack Developer <span class="caret"></span></span>
+          </div>
+          <div class="mt-3">
+          <a href="assets/CV_Ikbaar_Rafi_Hermansyah.pdf" class="btn btn-accent btn-lg me-2" download="CV_Ikbaar_Rafi_Hermansyah.pdf">Download CV</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg">Hubungi</a>
+          </div>
+          <!-- decorative blobs -->
+          <div class="floating-blob blob-1"></div>
+          <div class="floating-blob blob-2"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mb-5">
+    <!-- ABOUT -->
+    <section id="about" class="py-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>About</h3>
+        <div>
+          <button id="btnEditAbout" class="btn btn-sm btn-light me-1 d-none admin-only" data-bs-toggle="modal" data-bs-target="#aboutModal">Edit</button>
+        </div>
+      </div>
+      <div class="card card-dark p-4 glass">
+        <p id="aboutText">Halo! Saya Ikbaar Rafi Hermansyah, seorang mahasiswa yang memiliki ketertarikan mendalam pada dunia coding, teknologi, dan pengembangan aplikasi. Saya senang menciptakan solusi kreatif melalui pemrograman dan terus mengasah kemampuan dalam berbagai bahasa pemrograman serta pengembangan web. <br>
+          <br>Bagi saya, setiap baris kode bukan sekadar instruksi, melainkan karya yang bisa membawa perubahan nyata.</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Projects</h3>
+        <div>
+          <button id="btnAddProject" class="btn btn-sm btn-outline-light me-2 d-none admin-only" disabled data-bs-toggle="modal" data-bs-target="#projectModal">Tambah Proyek</button>
+          <button id="btnManage" class="btn btn-sm btn-accent d-none admin-only" disabled>Admin Panel</button>
+        </div>
+      </div>
+
+      <div id="projectsGrid" class="row gy-3">
+        <!-- Project cards injected here -->
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Skills</h3>
+        <div>
+          <button id="btnAddSkill" class="btn btn-sm btn-outline-light me-2 d-none admin-only" data-bs-toggle="modal" data-bs-target="#skillModal">Tambah Skill</button>
+        </div>
+      </div>
+      <div id="skillsList" class="d-flex gap-2 flex-wrap">
+        <span class="badge skill-badge p-2">HTML</span>
+        <span class="badge skill-badge p-2">CSS</span>
+        <span class="badge skill-badge p-2">JavaScript</span>
+        <span class="badge skill-badge p-2">Bootstrap</span>
+        <span class="badge skill-badge p-2">Python</span>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="py-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Pengalaman</h3>
+        <div>
+          <button id="btnAddExp" class="btn btn-sm btn-outline-light me-2 d-none admin-only" data-bs-toggle="modal" data-bs-target="#expModal">Tambah Pengalaman</button>
+        </div>
+      </div>
+      <ul id="expList" class="list-unstyled mt-3">
+        <li class="mb-3 card card-dark p-3">
+          <strong>Intern Web Developer</strong> <small class="text-muted">— Perusahaan X, 2024</small>
+          <div>Deskripsi singkat pengalaman kerja atau tugas yang dilakukan.</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-4">
+      <h3>Contact</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Alamat email: <a id="emailLink" href="mailto:your.email@example.com">your.email@example.com</a></p>
+          <p>LinkedIn: <a href="#">linkedin.com/in/username</a></p>
+        </div>
+        <div class="col-md-6">
+          <form id="contactForm" class="card card-dark p-3">
+            <div class="mb-2">
+              <input class="form-control bg-transparent text-light" type="text" id="contactName" placeholder="Nama" required>
+            </div>
+            <div class="mb-2">
+              <input class="form-control bg-transparent text-light" type="email" id="contactEmail" placeholder="Email" required>
+            </div>
+            <div class="mb-2">
+              <textarea class="form-control bg-transparent text-light" id="contactMessage" rows="3" placeholder="Pesan" required></textarea>
+            </div>
+            <button class="btn btn-accent w-100" type="submit">Kirim (mailto)</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4">
+    <div class="container text-center text-muted small">© <span id="year"></span> — Dibuat dengan ❤️</div>
+  </footer>
+
+  <!-- MODALS (kept as-is) -->
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-light card-dark">
+        <div class="modal-header">
+          <h5 class="modal-title">Admin Login</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-2">
+              <input id="loginUser" class="form-control bg-transparent text-light" placeholder="Username" required>
+            </div>
+            <div class="mb-2">
+              <input id="loginPass" class="form-control bg-transparent text-light" type="password" placeholder="Password" required>
+            </div>
+            <div class="form-text mb-2">Jika belum pernah mengatur password, gunakan default: <code>admin:admin123</code>. Ubah setelah login.</div>
+            <button class="btn btn-accent w-100" type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Modal -->
+  <div class="modal fade" id="projectModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark card-dark">
+        <div class="modal-header">
+          <h5 class="modal-title">Tambah / Edit Proyek</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="projectForm">
+            <input type="hidden" id="projId">
+            <div class="mb-2"><input id="projTitle" class="form-control bg-transparent text-light" placeholder="Judul proyek" required></div>
+            <div class="mb-2"><input id="projImage" class="form-control bg-transparent text-light" placeholder="URL gambar (optional)"></div>
+            <div class="mb-2"><input id="projLink" class="form-control bg-transparent text-light" placeholder="Link proyek (optional)"></div>
+            <div class="mb-2"><textarea id="projDesc" class="form-control bg-transparent text-light" rows="4" placeholder="Deskripsi"></textarea></div>
+            <button class="btn btn-accent" type="submit">Simpan Proyek</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Modal -->
+  <div class="modal fade" id="aboutModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark card-dark">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit About</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="aboutForm">
+            <div class="mb-2"><textarea id="aboutInput" class="form-control bg-transparent text-light" rows="5" placeholder="Tulis tentang dirimu..."></textarea></div>
+            <button class="btn btn-accent" type="submit">Simpan About</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skill Modal -->
+  <div class="modal fade" id="skillModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark card-dark">
+        <div class="modal-header">
+          <h5 class="modal-title">Tambah Skill</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="skillForm">
+            <div class="mb-2"><input id="skillInput" class="form-control bg-transparent text-light" placeholder="Nama skill (contoh: React, Node.js)" required></div>
+            <button class="btn btn-accent" type="submit">Tambah Skill</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience Modal -->
+  <div class="modal fade" id="expModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark card-dark">
+        <div class="modal-header">
+          <h5 class="modal-title">Tambah / Edit Pengalaman</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="expForm">
+            <input type="hidden" id="expId">
+            <div class="mb-2"><input id="expTitle" class="form-control bg-transparent text-light" placeholder="Posisi (contoh: Intern Web Developer)" required></div>
+            <div class="mb-2"><input id="expCompany" class="form-control bg-transparent text-light" placeholder="Perusahaan & Tahun (contoh: PT ABC, 2024)" required></div>
+            <div class="mb-2"><textarea id="expDesc" class="form-control bg-transparent text-light" rows="4" placeholder="Deskripsi tugas dan tanggung jawab"></textarea></div>
+            <button class="btn btn-accent" type="submit">Simpan Pengalaman</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Supabase JS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
